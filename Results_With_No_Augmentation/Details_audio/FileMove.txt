@@ -1,0 +1,51 @@
+import java.io.*;
+import java.nio.file.Files;
+class MoveFile{
+	public static void main(String[] args)throws IOException{
+		String dname_from = "E:/Research/SpeechEmotion/archive/";
+		String dname_to = "E:/Research/SpeechEmotion/Emotion_wise/";
+		File[] DirNames = new File(dname_from).listFiles();
+		for(File dir_actor : DirNames) {
+			File[] audio_list = new File((dname_from + dir_actor.getName())).listFiles();
+			String source = dname_from + dir_actor.getName() + "/";
+			for(File audio : audio_list) {
+				String name = audio.getName();
+				int category = Integer.parseInt(name.substring(6,8));
+				String sub_cat = name.substring(9,11);
+				String add;
+				switch(category) {
+					case 1:
+						add = "1_Neutral/";  
+						break;
+					case 2:
+						add = "2_Calm/"+sub_cat+"/";
+						break;
+					case 3:
+						add = "3_Happy/"+sub_cat+"/";
+						break;
+					case 4:
+						add = "4_Sad/"+sub_cat+"/";
+						break;
+					case 5:
+						add = "5_Angry/"+sub_cat+"/";
+						break;
+					case 6:
+						add = "6_Fearful/"+sub_cat+"/";
+						break;
+					case 7:
+						add = "7_Disgust/"+sub_cat+"/";
+						break;
+					case 8:
+						add = "8_Surprised/"+sub_cat+"/";
+						break;
+					default:
+						add = "";
+				}
+				File sourceFile = new File(source+name);
+				File destinationFile = new File(dname_to+add+name);
+				Files.copy(sourceFile.toPath(), destinationFile.toPath());
+			}
+		}
+		System.out.print("Done");
+	}
+}

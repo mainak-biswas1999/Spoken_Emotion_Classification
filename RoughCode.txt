@@ -1,0 +1,12 @@
+from Masterfile import Caller
+Caller("EmotionDataset", "")
+
+
+
+
+from Masterfile import Caller
+Caller("EmotionDataset", "", "CSVFiles/Data/X_train.npy", "CSVFiles/Data/Y_train.npy", "CSVFiles/Data/X_test.npy", "CSVFiles/Data/Y_test.npy")
+
+
+from learnEmotion import train_test_LSTM
+train_test_LSTM("../CSVFiles/Data/X_train.npy", "../CSVFiles/Data/Y_train.npy", "../CSVFiles/Data/X_test.npy", "../CSVFiles/Data/Y_test.npy")

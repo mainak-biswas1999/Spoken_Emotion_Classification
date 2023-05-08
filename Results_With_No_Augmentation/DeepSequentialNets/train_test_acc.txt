@@ -1,0 +1,9 @@
+Attempt1 (32, no dropout)
+Train accuracy: 99.01%
+
+Test Accuracy: 57.40%
+
+Need regularization
+Train accuracy: 92.501%
+
+Test Accuracy: 63.00%
